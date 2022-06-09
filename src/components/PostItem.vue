@@ -1,9 +1,8 @@
 <template>
-	<div class="post">
-		<div class="post__title"> <span>Название:</span> {{ post.title }} </div>
-		<div class="post__body"> <span>Текст:</span> {{ post.body }} </div>
+	<div class="post__item">
+		<div><strong>Название: </strong> {{ post.title }} </div>
+		<div><strong>Описание: </strong> {{ post.body }} </div>
 	</div>
-
 </template>
 
 
@@ -14,20 +13,18 @@ export default {
 			type: Object,
 			required: true,
 		}
+
 	}
 }
 
 </script>
 
 
-<style scoped>
-.post {
-	padding: 15px;
-}
 
-.post span {
-	font-weight: 700;
-	font-size: 18px;
+<style>
+.post__item {
+	padding: 15px;
+	border: 3px solid teal;
+	margin-top: 15px;
 }
 </style>
-

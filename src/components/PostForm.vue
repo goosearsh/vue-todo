@@ -1,21 +1,18 @@
 <template>
-	<form class="form" @submit.prevent>
-		<input class="form__input" placeholder="Введите заголовок" v-model="post.title">
-		<input class="form__input" placeholder="Введите текст" v-model="post.body">
-		<button class="form__btn" @click="createPost">Добавить </button>
+	<form class="form" @submit.prevent="createPost">
+		<h4>Создание поста</h4>
+		<input v-model="post.title" class="form__title" type="text" placeholder="Введите название">
+		<input v-model="post.body" class="form__body" type="text" placeholder="Введите описание">
+		<button class="form__btn">Создание поста</button>
 	</form>
-
-
-
-
 </template>
-
 
 <script>
 export default {
 	data() {
 		return {
 			post: {
+				id: Date.now(),
 				title: '',
 				body: '',
 			}
@@ -23,36 +20,40 @@ export default {
 	},
 	methods: {
 		createPost() {
-			this.post.id = Date.now();
 			this.$emit('create', this.post);
-			this.post = {
-				title: "",
-				body: "",
-			}
+			this.post.title = '';
+			this.post.body = '';
 		}
 	}
 }
-
-
 </script>
 
 
-<style scoped>
+
+<style lang="scss" scoped>
 .form {
 	display: flex;
 	flex-direction: column;
-}
 
-.form__input {
-	padding: 15px 10px;
-	margin-bottom: 15px;
-
-}
-
-
-.form__btn {
-
-	padding: 15px 10px;
-	align-self: flex-end;
+	&__title {
+		width: 100%;
+		border: 1px solid teal;
+		padding: 10px 15px;
+		margin-top: 15px;
+	}
+	&__body {
+		width: 100%;
+		border: 1px solid teal;
+		padding: 10px 15px;
+		margin-top: 15px;
+	}
+	&__btn {
+		align-self: flex-end;
+		margin-top: 15px;
+		background: none;
+		padding: 10px 15px;
+		color: teal;
+		border: 1px solid teal;
+	}
 }
 </style>

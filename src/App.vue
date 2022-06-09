@@ -1,49 +1,45 @@
 <template>
-
 	<div class="app">
-
-		<PostForm @create="createPost" />
-		<PostList :posts="posts" />
-
-
-
-
+		<PostForm @create="createPost"></PostForm>
+		<PostList v-bind:posts="posts"></PostList>
 	</div>
-
 </template>
 
 
 <script>
-import PostForm from './components/PostForm';
-import PostList from './components/PostList';
+import PostForm from "@/components/PostForm.vue";
+import PostList from "@/components/PostList.vue";
 
 export default {
-	components: {
-		PostList,
-		PostForm,
-	},
+	components: { PostForm, PostList },
 	data() {
 		return {
 			posts: [
-				{ id: 1, title: 'Название 1', body: 'Тело 1 ' },
-				{ id: 2, title: 'Название 2', body: 'Тело 2' },
-				{ id: 3, title: 'Название 3', body: 'Тело 3' },
-				{ id: 4, title: 'Название 4', body: 'Тело 4' },
+				{ id: 1, title: "JavaScript 1", body: "Описание поста 1" },
+				{ id: 2, title: "JavaScript 2", body: "Описание поста 2" },
+				{ id: 3, title: "JavaScript 3", body: "Описание поста 3" },
 			],
-			title: '',
-			body: '',
-		}
-
+		};
 	},
+	
 	methods: {
 		createPost(post) {
-			this.posts.push(post)
-		}
-	}
+			this.posts.push(post);
+		},
+	},
 }
 </script>
 
 
 
-<style>
+<style lang="scss">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.app {
+	padding: 20px;
+}
 </style>

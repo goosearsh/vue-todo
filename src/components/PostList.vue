@@ -1,19 +1,9 @@
 <template>
 	<div>
-		<h3>Список:</h3>
-		<PostItem v-for="post in posts" :key="post.id" v-bind:post="post">
-
-		</PostItem>
+		<h4>Список пользователей</h4>
+		<PostItem v-for="post in posts" :key="post.id" :post="post"></PostItem>
 	</div>
-
-
-
 </template>
-
-
-
-
-
 
 <script>
 import PostItem from '@/components/PostItem.vue';
@@ -27,14 +17,8 @@ export default {
 	},
 
 }
-
-
 </script>
 
+<style lang="scss" scoped>
 
-<style scoped>
-.post {
-	border: 3px solid teal;
-	margin-bottom: 15px;
-}
 </style>
