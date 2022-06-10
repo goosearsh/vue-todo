@@ -12,7 +12,6 @@ export default {
 	data() {
 		return {
 			post: {
-				id: Date.now(),
 				title: '',
 				body: '',
 			}
@@ -20,9 +19,12 @@ export default {
 	},
 	methods: {
 		createPost() {
+			this.post.id = Date.now();
 			this.$emit('create', this.post);
-			this.post.title = '';
-			this.post.body = '';
+			this.post = {
+				title: '',
+				body: '',
+			}
 		}
 	}
 }
@@ -41,12 +43,14 @@ export default {
 		padding: 10px 15px;
 		margin-top: 15px;
 	}
+
 	&__body {
 		width: 100%;
 		border: 1px solid teal;
 		padding: 10px 15px;
 		margin-top: 15px;
 	}
+
 	&__btn {
 		align-self: flex-end;
 		margin-top: 15px;

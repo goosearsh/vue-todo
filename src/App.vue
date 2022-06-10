@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<PostForm @create="createPost"></PostForm>
-		<PostList v-bind:posts="posts"></PostList>
+		<PostList :posts="posts"></PostList>
 	</div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 			],
 		};
 	},
-	
+
 	methods: {
 		createPost(post) {
 			this.posts.push(post);
