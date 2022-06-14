@@ -1,9 +1,9 @@
 <template>
 	<form class="form" @submit.prevent="createPost">
-		<h4>Создание поста</h4>
+		<h2>Создание поста:</h2>
 		<input v-model="post.title" class="form__title" type="text" placeholder="Введите название">
 		<input v-model="post.body" class="form__body" type="text" placeholder="Введите описание">
-		<button class="form__btn">Создание поста</button>
+		<GlobalButton class="form__button">Создание поста</GlobalButton>
 	</form>
 </template>
 
@@ -12,21 +12,26 @@ export default {
 	data() {
 		return {
 			post: {
-				title: '',
-				body: '',
+				title: "",
+				body: "",
 			}
-		}
+		};
 	},
 	methods: {
 		createPost() {
-			this.post.id = Date.now();
-			this.$emit('create', this.post);
-			this.post = {
-				title: '',
-				body: '',
+			if (this.post.title != 0 && this.post.body != 0) {
+				this.post.id = Date.now()
+				this.$emit("create", this.post);
+				this.post = {
+					title: "",
+					body: "",
+				};
+			}
+			else {
+				alert("Введите все данные");
 			}
 		}
-	}
+	},
 }
 </script>
 
@@ -51,13 +56,9 @@ export default {
 		margin-top: 15px;
 	}
 
-	&__btn {
-		align-self: flex-end;
+	&__button {
 		margin-top: 15px;
-		background: none;
-		padding: 10px 15px;
-		color: teal;
-		border: 1px solid teal;
+		align-self: flex-end;
 	}
 }
 </style>

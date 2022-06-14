@@ -1,14 +1,14 @@
 <template>
 	<div class="app">
 		<PostForm @create="createPost"></PostForm>
-		<PostList :posts="posts"></PostList>
+		<PostList @delete="deletePost" :posts="posts"></PostList>
 	</div>
 </template>
 
 
 <script>
-import PostForm from "@/components/PostForm.vue";
-import PostList from "@/components/PostList.vue";
+import PostForm from "@/components/PostForm";
+import PostList from "@/components/PostList";
 
 export default {
 	components: { PostForm, PostList },
@@ -26,6 +26,9 @@ export default {
 		createPost(post) {
 			this.posts.push(post);
 		},
+		deletePost(post) {
+			this.posts = this.posts.filter((p) => p.id != post.id)
+		}
 	},
 }
 </script>
